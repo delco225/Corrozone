@@ -83,13 +83,16 @@
 					 
 					 //--file d actalite-------------------------
 					     require_once('Vues/file_actualite.php');
+						
+						
 				?>
 					 
 					 <section  id="dispaly_corro" class="col-md-6 my_space "  >
                      
 					 <?php
 					 	 //-- contenu--------------------------------
-                         require_once('Vues/display_corro.php');
+                        // require_once('Vues/display_corro.php');
+						require_once('Vues/display_search.php');
 					  ?>
                      </section>
   
