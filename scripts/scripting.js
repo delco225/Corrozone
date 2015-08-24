@@ -18,9 +18,6 @@ $('#correction').click(
 		var $contain=$('<div id="mon_espace"></div>');
 		$contain.load('Vues/display_corro.php') ;
 		$contain.prependTo('#dispaly_corro');
-		
-		
-	
 					}
 						) ;
 }) ;
