@@ -68,8 +68,7 @@
  
   
 
-  <div id="contener" class="container row">
-  <!-- corps de notre page à traiter -->
+  
           
            
               <!-- mise de connexion  avant l etablissement de la la session -->
@@ -77,7 +76,11 @@
 					
 						//-----------------------menu bar
 						 require_once('Vues/user_bar.php');
-					 
+					?>
+                    <div id="contener" class="container row">
+  					<!-- corps de notre page à traiter -->
+                    
+                    <?php 
 						 //--zone des amis--------------------------- 
 						 require_once('Vues/mes_amis.php');
 					 
@@ -91,8 +94,10 @@
                      
 					 <?php
 					 	 //-- contenu--------------------------------
-                        // require_once('Vues/display_corro.php');
-						require_once('Vues/display_search.php');
+                         require_once('Vues/display_corro.php');
+						//require_once('Vues/display_search.php');
+						//require_once('Vues/reset_password.php');
+						
 					  ?>
                      </section>
   
