@@ -94,9 +94,9 @@
                      
 					 <?php
 					 	 //-- contenu--------------------------------
-                         require_once('Vues/display_corro.php');
+                         //require_once('Vues/display_corro.php');
 						//require_once('Vues/display_search.php');
-						//require_once('Vues/reset_password.php');
+						require_once('Vues/add_file.php');
 						
 					  ?>
                      </section>
@@ -140,7 +140,7 @@
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="../Boostrap/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   </body>
   
   

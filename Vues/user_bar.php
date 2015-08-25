@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse row " style="width:auto; padding-left:60px;">
+<div class="navbar navbar-inverse row " style="width:auto;padding-left:60px;">
                   <div class="collapse navbar-collapse">
                       <div class="navbar-header">
                           <a href="/" class="navbar-brand"> Corro Zone </a>
@@ -19,13 +19,13 @@
                         </form>   
                         
                         <ul class="nav navbar-nav" >
-                        <li class="dropdown " >
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">  <?php 
+                        <li class="dropdown" >
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop_account" aria-haspopup="true" aria-expanded="true">  <?php 
                             														 	if (!isset($_SESSION['register'] )){echo( " Mon compte" ) ;}
                                                                                         else echo($_SESSION['mail']) ;
                                                                                          ?>	 
                                                                                              <span class="caret"> </span> </a> 
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" aria-labelledby="drop_account">
                                 <li>  <a href="#">   <span class="glyphicon glyphicon-arrow-down "> </span> ajout </a>      </li>
                                 <li>  <a href="#">  <span class="glyphicon glyphicon-log-out"> </span>  Autres correction </a>   </li>
                                 <li>  <a href="#">  <span class="glyphicon glyphicon-user"> </span> compte Correction </a>      </li>
