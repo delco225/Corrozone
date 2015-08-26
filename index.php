@@ -107,7 +107,7 @@
 			 
 			  }
 			  
-			    else { require_once("Vues/connexion.php");
+			    else { header("location:connexion.php");
 				
 				} ?>
                 

@@ -1613,6 +1613,16 @@ pre code {
                                             
 	
 	}
+	.bord2 {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+    border-width:1px;
+	border-style: solid;
+ 	border-color:#fff;
+                                            
+	
+	}
 .container {
   
   padding-right: 5px;
@@ -5036,11 +5046,11 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  padding-top: 30px;
+  padding-top:5px;
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  background-color: #cfe0d8;
 }
 .jumbotron h1,
 .jumbotron .h1 {
