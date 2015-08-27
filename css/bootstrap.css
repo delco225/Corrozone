@@ -2593,9 +2593,9 @@ output {
 .form-control {
   display: block;
   width: 100%;
-  height: 34px;
+  height: 50px;
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
@@ -5052,6 +5052,7 @@ a.badge:focus {
   color: inherit;
   background-color: #cfe0d8;
 }
+
 .jumbotron h1,
 .jumbotron .h1 {
   color: inherit;

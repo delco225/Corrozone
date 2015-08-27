@@ -1,7 +1,8 @@
 /*
-* par Ahoussi Armand SAY 
-* ahoussi.say@telecom-bretagne.eu
-* Auteur de corro_zone 
+*   
+*   By Ahoussi Armand SAY 
+*   ahoussi.say@telecom-bretagne.eu
+*   Author of corro_zone 
 */
 
 //getsion de la bare des menus -------------------

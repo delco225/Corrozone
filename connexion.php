@@ -33,7 +33,7 @@
                               
                	<div style="display:inline-block;width:720px;margin-left:20px;">
                         			<h1 style=";margin-left:20px;">Corro Zone </br> <small> don't waste time anymore !</small> </h1>
-                                     <section id="nav_left_zone" style=" width:500px;" >
+                                     <section id="nav_left_zone" style=" width:510px;" >
                
                <p class="text-justify" style="font-size:18px;margin-left:20px;">
               <b> CorroZone </b> est un site conçu pour permettre aux étudiants de Télécom-Bretagne 
@@ -73,11 +73,11 @@
                                                 
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Email Telecom Bretagne </label>
-                                    <input type="email" class="form-control" id="mail" name="mail" placeholder="Email">
+                                    <input type="email" class="form-control entry" id="mail" name="mail" placeholder="Email">
                                   </div>
                                   <div class="form-group">
                                     <label for="exampleInputPassword1">Mot de passe </label>
-                                    <input type="password" class="form-control" id="passwd" placeholder="Password" name="pass" >
+                                    <input type="password" class="form-control entry" id="passwd" placeholder="Password" name="pass" >
                                   </div>
                                  
                                   <div class="checkbox">
@@ -85,7 +85,7 @@
                                       <input type="checkbox"> se souvenir de moi 
                                     </label>
                                   </div>
-                                  <button type="submit" class="btn btn-primary" name="submit" value="connexion"> connexion </button>
+                                  <button type="submit" class="btn btn-success btn-lg" name="submit" value="connexion"> connexion </button>
                                 </form>
               </section> 
                           
@@ -93,7 +93,7 @@
                
             
           
-    <div class="container "   >
+    <div class="container "  >
     	<div name="pub" class="row" style="margin:auto;">
   			<div class="col-sm-6 col-md-4">
     		<div class="thumbnail mts">
@@ -134,7 +134,7 @@
               
               
               <div class="page-header"></div>
-              <div id="footer" style="bottom:5px;" class="container" >
+              <div id="footer" style="bottom:5px;height:200px; background-color:#cfe0d8"  >
               <p style="margin:auto;"> Powered by Ahoussi Armand and Kouamé Michel   </p>
               </div>
 			   
