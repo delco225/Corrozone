@@ -7,7 +7,7 @@
                       <li class="active" id="correction">  <a href="#"> Corrections </a>	      </li> 
                       <li id="alerte">  <a href="#" >Alertes <span class="badge"> +3 </span> </a>      </li>
                       <li id="message">  <a href="#" >Messages <span class="badge"> +5 </span> </a>       </li>
-                      <li id="groupe">  <a href="#">Groupes </a>      </li> 
+                      <li id="groupe">  <a href="#">Corro Chanel </a>      </li> 
                        
                       
                       

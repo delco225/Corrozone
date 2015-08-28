@@ -200,6 +200,7 @@ textarea {
 optgroup {
   font-weight: bold;
 }
+
 table {
   border-spacing: 0;
   border-collapse: collapse;
@@ -3098,7 +3099,7 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #333;
+  color: #fff;
   background-color: #fff;
   border-color: #ccc;
 }

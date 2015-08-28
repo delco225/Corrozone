@@ -97,6 +97,7 @@
                          //require_once('Vues/display_corro.php');
 						//require_once('Vues/display_search.php');
 						require_once('Vues/add_file.php');
+						// require_once('Vues/alerte_corro.php') ;
 						
 					  ?>
                      </section>

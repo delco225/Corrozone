@@ -67,7 +67,7 @@
                                                
                                                
                                   <form style="margin:10px;"
-								  <?php echo("action=\"".$_SERVER['PHP_SELF']."\"  method=\"get\"");?>
+								  <?php echo("action=\"index.php\"  method=\"get\"");?>
                                   >
                             
                                                 
