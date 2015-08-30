@@ -22,7 +22,9 @@
 	 if (! session_id()) {  
 		session_start();}
 	// verification de l utilisateur 
-	if (userExist($_GET['mail'] ,$_GET['pass'])) {
+	if (userExist($_GET['mail'],$_GET['pass'])) {
+		     // etat connecté de l utilisateur 
+			 DatabaseRequest("UPADTE utilisateur set status ='1' where mail ='".$_GET['mail']."'");
 	
 			// enregistrement de la session 
 			$_SESSION['mail']=$_GET['mail'];
@@ -95,8 +97,8 @@
 					 <?php
 					 	 //-- contenu--------------------------------
                          //require_once('Vues/display_corro.php');
-						//require_once('Vues/display_search.php');
-						require_once('Vues/add_file.php');
+						require_once('Vues/display_search.php');
+						//require_once('Vues/add_file.php');
 						// require_once('Vues/alerte_corro.php') ;
 						
 					  ?>

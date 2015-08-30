@@ -135,7 +135,17 @@ function FileSizeConvert($bytes)
     return $result;
 }
 
-
+// cette fonction sert à interroger la base de données 
+//elle retourne directement le resultat en format de données itérative  
+function DatabaseRequest($request){
+		
+		 $connexion = connect("localhost","root","","bd_corro_zone") ;
+	     $reponse = $connexion->query($request) ;
+		 	
+		 return $reponse ;
+		 
+	
+	}
    
 
 ?>

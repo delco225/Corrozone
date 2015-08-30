@@ -38,41 +38,48 @@
                                    <h3 class="panel-title text-center">Mes amis</h3>
                                    </div>
                                   <div class="panel-body">
-                                                 <div id="freind_module">
-                                                 <img src="img/icon_de_qualite/moyen.jpg" width="40px" height="40px" 
-                                                 style="float:left; 
+                                 <?php 
+								       
+									   $stmt=DatabaseRequest("SELECT mail,status from utilisateur where 1 order by status desc");
+									   
+									    
+									   		while( $row=$stmt->fetch()){
+												$Usernamenone_split=explode("@",$row['mail']);
+												$user=$Usernamenone_split[0];
+												$Username=explode(".",$user) ;
+												echo("
+                                                 <div id=\"freind_module\">
+                                                 <img src=\"img/icon_de_qualite/moyen.jpg\" width=\"40px\" height=\"40px\" 
+                                                 style=\"float:left; 
                                                  margin-top:10px ;
                                                  margin-left:5px;
-                                                 position:absolute;">
-                                                 <div id="user_description" style="padding-left:60px;
+                                                 position:absolute;\">
+                                                 <div id=\"user_description\" style=\"padding-left:60px;
                                                               border-width:1px;
-                                                              border-style: solid;
-                                                              border-color:#0eb3c2;" >
-                                                 <h4>  Armand33 </br>
-                                                  <small> en ligne   </small> 
+                                                              border-style: solid;");
+												if( $row['status']==1 ) {
+												
+                                                 echo("  border-color:#0eb3c2;\" >
+                                                    <h4>".$Username[0]." </br> 
+												 
+													
+                                                  <small> en ligne   </small>
+												  
+												   </h4>
+                                                 </div>
+                                                 
+                                                 </div>");}
+												  else{echo(" 
+												     border-color:#FF00FF;\" >
+                                                    <h4>".$Username[0]." </br> <small> en ligne il ya .... </small>
                                                     
                                                  </h4>
                                                  </div>
                                                  
-                                                 </div>
-                                                  <div id="freind_module">
-                                                 <img src="img/icon_de_qualite/moyen.jpg" width="40px" height="40px" 
-                                                 style="float:left; 
-                                                 margin-top:10px ;
-                                                 margin-left:5px;
-                                                 position:absolute;">
-                                                   <div id="user_description" style="padding-left:60px;
-                                                              border-width:1px;
-                                                              margin-top:2px;
-                                                              border-style: solid;
-                                                              border-color:#FF00FF;" >
-                                                 <h4> user name </br>
-                                                  <small> en ligne il y a 5 minute   </small> 
-                                                    
-                                                 </h4>
-                                                 </div>
-                                                 
-                                                 </div>
+                                                 </div>");}
+											}
+                                       ?>          
+                                               
                                     </div>
                                   
                                    
