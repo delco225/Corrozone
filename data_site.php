@@ -137,13 +137,23 @@ function FileSizeConvert($bytes)
 
 // cette fonction sert à interroger la base de données 
 //elle retourne directement le resultat en format de données itérative  
+
 function DatabaseRequest($request){
 		
 		 $connexion = connect("localhost","root","","bd_corro_zone") ;
-	     $reponse = $connexion->query($request) ;
-		 	
+	     $reponse = $connexion->query($request) ;	
 		 return $reponse ;
 		 
+	
+	}
+function Databaseupdate($Qquery,$array_data) {
+	
+				$connexion = connect("localhost","root","","bd_corro_zone") ;
+	     		$result=$connexion->prepare($Qquery);
+				$result->execute($array_data);
+				return $result;
+					
+	
 	
 	}
    

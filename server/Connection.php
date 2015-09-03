@@ -10,7 +10,7 @@ class Connection
 	private $ip;
 	private $port;
 	private $connectionId = null;
-	
+	private $connexion_mail = null;
 	public $waitingForData = false;
 	private $_dataBuffer = '';
 
@@ -494,5 +494,12 @@ class Connection
 	public function getClientApplication()
 	{
 		return (isset($this->application)) ? $this->application : false;
+	}
+	
+	public function setConnexion_mail($mail) {
+	
+	   $this->connexion_mail =$mail ;
+	   return true ;
+	
 	}
 }

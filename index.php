@@ -24,7 +24,7 @@
 	// verification de l utilisateur 
 	if (userExist($_GET['mail'],$_GET['pass'])) {
 		     // etat connecté de l utilisateur 
-			 DatabaseRequest("UPADTE utilisateur set status ='1' where mail ='".$_GET['mail']."'");
+			// DatabaseRequest("UPADTE utilisateur set status ='1' where mail ='".$_GET['mail']."'");
 	
 			// enregistrement de la session 
 			$_SESSION['mail']=$_GET['mail'];
@@ -33,6 +33,7 @@
     		$_SESSION['connect_time']=time()+60;
 	
 			$_SESSION['register']=true;  
+			setcookie("user_mail",$_GET['mail'],time()+72000) ;
 								 }
 		else echo ("utilisateur n existe pas "); 
   }
@@ -53,6 +54,7 @@
 	  
 	  <script src="scripts/jquery.js"></script>
        <script src="scripts/scripting.js"></script>
+       <script src="scripts/user_management.js"></script>
       
       		
         

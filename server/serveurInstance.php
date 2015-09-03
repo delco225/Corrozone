@@ -6,6 +6,8 @@ include "Connection.php";
 class serveurInstance {
 	
 	public $server;
+	public $user_mail = array() ;
+	public $connections = array() ; 
 	
 /*
 constructeur de notre classe*/ 	
@@ -21,6 +23,7 @@ public function __construct(){
 		$this->server->setMaxRequestsPerMinute(2000);
 		$this->server->setHook($this);
 		$this->server->run();
+		
 		
 }
  
@@ -39,6 +42,10 @@ public function onDisconnect($connection_id){
 		
 		if(isset($this->connections[$connection_id])){
 			unset($this->connections[$connection_id]);
+			if (isset($this->user_mail['$connection_id'])) {
+				
+				 unset ($this->user_mail['$connection_id']);
+				}
 		}
 
 }
@@ -46,10 +53,12 @@ public function onDisconnect($connection_id){
 /*OnData received est invoquer à la reception de donnée */
 public function onDataReceive($connection_id,$data){
 
-    echo "\nData received from $connection_id :";
+    echo "\nData received from $connection_id : $data ";
 		
 		$data = json_decode($data,true);
 		print_r($data);
+		
+		 
 		
 		if(isset($data['action'])){
 			$action = 'action_'.$data['action'];
@@ -71,10 +80,18 @@ public function onDataReceive($connection_id,$data){
 	}
 	///// ACTIONS ////
 	public function action_register($connection_id,$data){
+		
 		$this->connections[$connection_id] = max($this->connections) + 1;
 		
 		$data = array();
+		
 		$data['user_id'] = $this->connections[$connection_id];
+		
+		// add the user mail to the connection 
+		$var_mail = array($connection_id => $data['mail']);
+		
+		$this->user_mail=$this->user_mail+$var_mail ;
+		
 		$data['users_online'] = count($this->connections);
 		$this->server->sendData($connection_id,'registred',$data);
 	}

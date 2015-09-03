@@ -28,7 +28,7 @@ if (isset($_POST["valid"]))
 		case UPLOAD_ERR_OK : 
 			// Fichier bien reçu. 
 			// Détermine sa destination finale. 
-			$destination = "tutoriels/$nom"; 
+			$destination = "BD/$nom"; 
 
 			// Copie le fichier temporaire 
 			if (copy($fichier_temporaire,$destination))

@@ -1,0 +1,188 @@
+				      ####################################################
+ 				      #	TEXT  PROTOCOLE FOR COMMUNICATION ON  CORRO_ZONE #
+                                      ####################################################
+
+AUTHOR 
+Ahousi Armand SAY 
+NETWORK AND COMPUTER SCIENCE  ENGINEERING
+ahoussi.say@telecom-bretagne.eu
+delcolink@gmail.com
+02/09/2015     
+
+
+1-Description 
+
+	When opening a new connexion each the different message will be exchanged
+	with the serveur and user  and also between user
+	The implementation is only in text message due to websocket architechture and 
+	Those messages will be implemented using a json Object define like this  
+2-messages
+	2.1 Message between user and user 
+
+  -CHAT_MSG
+	Tipically the message exchange by the user is a chat message : 
+	a simple text message including the date when the message have 
+	been send we defined it like this :
+
+                =============================================
+		# TYPE           : CHAT_MSG                 #
+                # MSG_ID         : #ID  
+		# SENDER_MAIL    : Mail@telecom-bretagne.eu #
+                # RECEIVER_MAIL  : Mail@telecom-bretagne.eu #
+                # DATE           : 15/02/2015:8H:35M:23     #
+                =============================================
+ 
+   -ACK_MSG 
+ACK_MSG are typically The Acknoledgment message between users to send delivery report to user two state are required in this message 
+
+                     state 1 : RECEIVED 
+                     state 2 : READED
+                     sate  3 : TYPING
+         
+           The priorities are in the given order : if the state 2 is enable then the state 1 is achieved 
+                                                   if the state 3 is enable then the states 2 and 3 are achieved
+
+                  =========================================================================   
+                  # TYPE          : ACK_MSG                                               #
+                  # STATE         : RECEIVED - RECEIVED-READED - RECEIVED_READED_TYPING   #
+                  # MESSAGE_ID    : #ID                                                   #
+                  # SENDER_MAIL   : Mail@telecom-bretagne.eu                              #
+                  # RECEIVER_MAIL : Mail@telecom-bretagne.eu                              #
+		  # DATE          : 15/02/2015:8H:35M:23                                  #
+                  =========================================================================
+           TYPING state status can be recevied in many time but not the other status message  
+
+
+     2.2  SERVEUR TO USER MESSAGE 
+
+     -UPDATE_USER_MAIL
+                 This message is used to set the user mail during the connection 
+		  =========================================================================   
+                  # TYPE          : UPDATE_USER_MAIL                                      #
+                  # MAIL          : RECEIVED - RECEIVED-READED - RECEIVED_READED_TYPING   #
+                  # CONNEXION_ID  : #ID_OF_THE CONNEXION                                  #
+                  =========================================================================
+        This message is used by the serveur to ask the user mail , and the field MAIL should be null but The field CONNECTION_ID 
+        must contain the ID of the connexion given by the serveur then the user should reply to the serveur with the good connexion ID 
+        and the good mail to continue .         
+
+     -BADGE_UPDATE_MSG
+	This message will be used between the server and the users to update the badges in our web page
+	The TARGET help the developper to target  the badge to set ,we define #Target_#number_of_additional_Badge 
+
+		  ========================================================================================   
+                  # TYPE          : BADGE_UPDATE_MSG                                                     #
+                  # TARGET        : MSG_#number - ALERTE_#number - USER@TB_#number - CORRECTION_#number  #
+                  # RECEIVER_MAIL : Mail@telecom-bretagne.eu                                             #
+		  # DATE          : 15/02/2015:8H:35M:23                                                 #
+                  ========================================================================================
+		
+     -ALERTE_MSG
+        ALERTE_MSG are used to informe the user continiously that another user has created an alerte and they are used to
+Updated the user interface automatically without reload the web-page
+   
+		  ============================================   
+                  # TYPE          : ALERTE_MSG               #
+                  # FROM          : user@TB                  #                                                         
+                  # TO            : GROUP - ALL              #                                                         
+		  # DATE          : 15/02/2015:8H:35M:23     #
+		  # TAG           : #MTS - #TP - #204        #
+                  # MSG           : MSG_TEXT                 # 
+                  ============================================
+
+     -ACTUALITY_UPDATE_MSG
+
+ACTUALITY_UPDATE_MSG are used to informed users that something happen for example 
+		
+		-someone has joined corro_zone
+                -someone has ivited another person to use corro_zone
+                -someone published a correction 
+
+		  ===============================================================   
+                  # TYPE          : ACTUALITY_UPDATE_MSG                        #                         
+                  # CASE          : NEW POST - NEW USER -LOOKING_FOR_CORRECTION #                                                         
+		  # DATE          : 15/02/2015:8H:35M:23                        #
+		  # TAG           : #MTS - #TP - #204                           #
+                  # MSG           : MSG_TEXT                                    # 
+                  ===============================================================
+      -USER_STATUS 
+      This message is used to keep the users informed about the the status of other user ,
+		
+ 		  ===============================================================   
+                  # TYPE          : USER_STATUS                                 #                         
+                  # STATUS        : CONNECTED - DISCONNECTED                    #
+                  # MAIL          : USER@TB                                     #
+                  ===============================================================                         
+        
+ 		 
+            
+     
+     -ADVICE_CORRO_ZONE_SPECIAL_MS
+
+This type of messages will be used to make advice on the website we will used it to publish a specific popup 
+on the user UI at a random time 
+                     ================================================   
+                     # TYPE          : ADVICE_CORRO_ZONE_SPECIAL_MS #
+                     # FROM          : CORRO_ZONE                   #
+                     # SRC-TYPE      : HTMLCODE - IMAGE             #
+                     # SRC           : LINK                         #
+                     ================================================ 
+
+ 2.3-ERROR_MSG 
+
+ 3 - SIMULATION
+  
+ SENDING MSG
+ =========================================================================================================
+                   USER1                  SERVEUR [forwardeur]                     USER2                   	
+
+                    =========================>CHAT_MSG
+                                                  |
+                                              FIND_RECEIVER()
+                                                  |
+                                                  ================================>CHAT_MSG
+                                                                                       |
+                                               ACK_MSG<=================================
+                                                  |         
+					      FIND_RECEIVER()
+                                                  |
+                  ACK_MSG <========================
+               STATUS:RECEIVED                                                                    
+										    When TYPING ..... 
+		  ACK_MSG <================================================================ 
+               STATUS:TYPING 
+
+=============================================================================================================
+
+ BADGE_UPDATE_MSG
+=============================================================================================================
+
+            USER1                          SERVEUR                    USER2 ,USER3 ,..USER N
+            ==========================>OnCorrectionpublishe(GROUP)
+                                              |
+                                       Broadcast(GROUP)===================>BADGE_UPDATE_MSG(#TARGET)
+                                              |
+            ==========================>OnAlerteCreated(GROUP)=============>BADGE_UPDATE_MSG(#TARGET)
+                                              .
+                                              .
+                                              .
+===============================================================================================================
+                                              
+ ALERTE_MSG 
+===============================================================================================================
+
+ 	  USER1                          SERVEUR                    USER2 ,USER3 ,..USER N
+            ======================>OnAlerteCreated(GROUP)
+                                             |
+                                       FIND_RECEIVER()
+                                             |
+                                              =============>ALERTE_MSG([USER1 ,USER2 ,...]) 
+                                     
+                                              
+                                              
+                                              .
+==============================================================================================================
+
+	-Complete 
+
+                         

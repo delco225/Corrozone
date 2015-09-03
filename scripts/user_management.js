@@ -37,7 +37,7 @@
                     return true;
                 };
 				
-		/*
+		/*-
 		*  When we received a message we call this function for processing the good Action   
 		*/	        //On message received  
 					socket.onmessage = function(msg) {
@@ -90,6 +90,8 @@
 			function register_user(){
                     payload = new Object();
                     payload.action 	= 'register';
+					var usermail = $document().ready(function() { $('#drop_acount').text() ;});
+					payload.mail = usermail;
                     socket.send(JSON.stringify(payload));
                 }
 				
