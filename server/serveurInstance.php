@@ -68,7 +68,11 @@ class serveurInstance {
 	  private static   $SRC                                = "src" ;
 	
 	  public           $server;
+	  //key value paire  keys are user connexio ID and value are user mail 
+	  
 	  public           $user_mail                          = array() ;
+	  
+	  //Connexion IDs  
 	  public           $connections                        = array() ; 
 	
 /*
@@ -88,7 +92,31 @@ public function __construct(){
 		
 		
 }
- 
+ // return the user mail when knowing user connexion ID 
+private function findUserMailByCoonectionID($connextionID) {
+	
+	
+	    if (isset($this->user_mail["$connextionID"])) {
+			     
+				 return $this->user_mail["$connextionID"] ;
+			    }  
+	
+	}
+	
+	
+// return the user ID when we have the user mail 
+	
+private function findUserIdByMail($usermail) {
+	
+	    $key  = array_search($usermail,$this->user_mail) ;
+		
+		return $key ;
+	}
+
+
+	
+	
+	
 
    /* we call this function on  the connexion */
 public function onConnect($connection_id){
@@ -143,33 +171,42 @@ public function onDataReceive($connection_id,$data){
 	///// ACTIONS ////
 	public function action_register($connection_id,$data){
 		
+		echo" ok on y es ----------------------------------------" ;
+		 print_r($data) ;
+		 $usermail = $data['mail'] ; 
+		 $var_mail = array($connection_id => $usermail );
+		 $this->user_mail=$this->user_mail+$var_mail ;
+		
 		$this->connections[$connection_id] = max($this->connections) + 1;
 		
 		$data = array();
-		
-		$data['user_id'] = $this->connections[$connection_id];
-		
-		// add the user mail to the connection 
-		$var_mail = array($connection_id => $data['mail']);
-		
-		$this->user_mail=$this->user_mail+$var_mail ;
-		
-		$data['users_online'] = count($this->connections);
+		$data['action']     = 'registrated' ;
+		$data['type']       = 'update_user_mail';
+		$data ['mail']      =  $usermail ;
+		$data['connection_id'] = $this->connections[$connection_id];
+			
 		$this->server->sendData($connection_id,'registred',$data);
 	}
 	
 	
-	public function action_chat_text($connection_id,$data){
-		$user_id	= $this->connections[$connection_id];
+	
+	
+	public function action_chat_message($connection_id,$data){
 		
-		if(isset($data['chat_text']) && strlen($data['chat_text'])>0){
-			$data['date_time'] = date('H:i:s');
-			foreach($this->connections as $key=>$value){
-				$this->server->sendData($key,'chat_text',$data);
-			}
-		}
+		 $user_id                 = $this->connections[$connection_id];
+		 $receiver_connexion_id   = findUserIdByMail( $data[$this->RECEIVER_MAIL]);
+		
+		if(isset($data[$this->MSG]) && strlen($data[$this->MSG])>0){
+			     $data[$this->DATE] = date('H:i:s');
+				 
+				 $this->server->sendData($receiver_connexion_id,$this->CHAT_MSG,$data);
+			
+		          	
+		 }
 		
 	}
+	
+	 
 	
 	
 	

@@ -79,6 +79,7 @@
 	   serverUrl = 'ws://localhost:8000'; 
       // user ID during connexion 
        var user_id = 0;
+	   var messageid =0 ;
 	   
 	   $(document).ready(function() {
 		
@@ -155,12 +156,82 @@
 						
 				}
 				
+			// formed chat msge
+			
+			function formedChatMsg(message){
+				     messageid ++ ;
+				     var user_mail     =$('#drop_acount').text(); 
+				     var receiver_mail = getCookie($('#receiver_user').text()); 
+					
+					 var data = new Object() ;
+					    data.action        = 'chat_message' ;
+					    data.type          = CHAT_MSG;
+						data.message_id    = messageid;
+						data.sender_mail   = user_mail;
+						data.receiver_mail = receiver_mail;
+						data.date          = Date() ;
+						data.message       = message ;
+                       					 
+			 return data ;		   
+				
+				
+				}	
+			// here to the user event 
+			
+			function chatMsgcapture () {
+				
+				$('#chat_box').click(
+				           function () {
+				             var chatmsg =  $('#chat_box').text()  ; 
+							 var data    =  formedChatMsg(chatmsg) ;
+							 socket.send(JSON.stringify(data));
+							 
+						   }
+				
+				 ) ;
+				 
+		    
+				
+				
+				
+				
+				}
+				
+			// action for a chat_message received 	
+			 function chatMessage_received() {
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 }   
+				
+				
+				
+				function getCookie(cname) {
+ 				   var name = cname + "=";
+    			   var ca = document.cookie.split(';');
+     			   for(var i=0; i<ca.length; i++) {
+        		   var c = ca[i];
+         		   while (c.charAt(0)==' ') c = c.substring(1);
+        		   if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    				}
+    			return "";
+				}
+				
+				
+				
+				
 			// We use register_user() to registered a user when he start a new connexion 	
 			function register_user(){
                     payload = new Object();
                     payload.action 	= 'register';
-					var usermail = $document().ready(function() { $('#drop_acount').text() ;});
+					var usermail = getCookie("user_mail")
 					payload.mail = usermail;
+					console.log("-------------------------------") ;
+					console.log(JSON.stringify(payload)) ;
                     socket.send(JSON.stringify(payload));
                 }
 				

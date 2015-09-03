@@ -92,12 +92,14 @@
                                                    
                                                    </div>
                                                     <div class="panel-heading" id="msg_box">
-    												<h3 class="panel-title"> <a> avec Armand33 </a> <span class="badge">1+</span> </h3>
+    												<h3 class="panel-title" id="receiver_user"> <a>  Armand  </a> <span class="badge">1+</span> </h3>
   													</div>
-                                                  <div id="conteneur_msg" > 
+                                                  <div id="conteneur_msg"  > 
                                                   
                                          
-                 <!-- debut d un message-->           <div id="actualite" 
+                 <!-- debut d un message--> 
+                 								
+                 							          <div id="actualite" 
                                                        style=" 
                                                         margin-left:5px; 
                                                         margin-top:5px;
@@ -162,7 +164,7 @@
 											   <div id="user_description" style="padding-left:5px;
 															" >
 											  
-                                               <span style ="font-size:14px;"> <a> armand33 </a> </br>vient d 'inviter  <a> delco1er </a>
+                                               <span style ="font-size:14px;"> <a> armand </a> </br>vient d 'inviter  <a> delco1er </a>
                                                aider le à trouver des corrections  
                                                 </span> 
 												
@@ -174,13 +176,13 @@
                                                  </div>
                                                  <div class="form-inline">
                                                             <div style="display:inline-block;width:50px;margin-bottom:5px;">
-                                                             <textarea rows="1" class="form-control" style="border-style: solid;
+                                                             <textarea  rows="1" class="form-control" style="border-style: solid;
  																									        border-color:#0eb3c2;"
                                                              								>
                                                              </textarea>
                                                              </div>
                                                              <div style="display:inline-block ;margin-left:190px;" >
-                                                             <button class="btn btn-info" >
+                                                             <button class="btn btn-info" id="chat_box" >
                                                               envoyer  
                                                              </button>
                                                              </div>

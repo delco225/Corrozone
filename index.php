@@ -1,9 +1,23 @@
   
+  <?php
+  include_once("data_site.php");
+  $stmt=DatabaseRequest("SELECT mail,status from utilisateur where 1 order by status desc");
+									   
+									    
+									   		while( $row=$stmt->fetch()){
+												
+												$Usernamenone_split=explode("@",$row['mail']);
+												$user=$Usernamenone_split[0];
+												$Username=explode(".",$user) ;
+												setcookie("$Username[0]",$row['mail'],time()+10800) ;
+												
+											}
+	?>
   <!doctype html>
   <html lang="fr">
   
   <?php
-  include_once("data_site.php");
+  
   
  	if (! session_id()) session_start() ;
 						 

@@ -44,9 +44,13 @@
 									   
 									    
 									   		while( $row=$stmt->fetch()){
+												
 												$Usernamenone_split=explode("@",$row['mail']);
 												$user=$Usernamenone_split[0];
 												$Username=explode(".",$user) ;
+												
+												
+												
 												echo("
                                                  <div id=\"freind_module\">
                                                  <img src=\"img/icon_de_qualite/moyen.jpg\" width=\"40px\" height=\"40px\" 
