@@ -4,10 +4,72 @@ include "Server.php";
 include "Connection.php";
 
 class serveurInstance {
+	//MESSAGE TYPE DEFINITION 
+
+    private static   $CHAT_MSG 				               = "chat_message" ;
+	private static   $ACK_MSG  				               = "ack_message"  ;
+	private static   $UPDATE_USER_MAIL    	               = "update_user_mail" ;
+	private static   $BADGE_UPDATE_MSG    			       = "badge_update_msessage";
+	private static   $ALERTE_MSG          			       = "alerte_message" ;
+	private static   $ACTUALITY_UPDATE_MSG   			   = "actuality_update_message" ;
+	private static   $USER_STATUS             		       = "user_status" ;
+	private static   $ADVICE_CORRO_ZONE_SPECIAL_MSG        = "Ad_cr_zone_sp_ms";
 	
-	public $server;
-	public $user_mail = array() ;
-	public $connections = array() ; 
+//MESSAGE ATTRIBUTE DEFINITION 
+
+  //CHAT_MSG
+    private static   $MSG_ID							   = "message_id" ;
+	private static   $SENDER_MAIL						   = "sender_mail";
+	private static   $RECEIVER_MAIL					       = "receiver_mail";
+	private static   $DATE                                 = "date" ;
+  // ACK_MSG 
+    private static   $STATE	                               = "state" ;
+	private static   $RECEIVED                             = "received" ;
+	private static   $RECEIVED_READ                        = "received_read";
+	private static   $RECEIVED_READ_TYPING                 = "received_read-typing";
+     //MSG_ID DEFINE EARLY 
+	 //SENDER_MAIL
+	 //RECEIVER_MAIL
+	 //DATE
+ // UPDATE_USER_MAIL 
+ 
+     private static   $MAIL                                = "mail";
+     private static   $CONNECTION_ID                       = "connection_id" ;
+	 
+ //  BADGE UPDATE 
+     private static   $TARGET                              = "target" ;
+	  //RECEIVER MAIL DONE
+	  //DATE DONE
+ // ALERTE_MSG	
+     private static   $FROM                                = "from" ;
+	 private static   $TO                                  = "to" ; 
+	   //DATE 
+	 private static   $TAG                                 = "tag" ;
+	 private static   $MSG                                 = "message" ;
+	  
+ // ACTUALITY_UPDATE_MSG 
+     private static   $CASE                                = "case" ;
+	   //DATE
+	   //TAG 
+	   //MSG 
+ // USER STATUS 
+ 
+     private static   $STAUTS                              = "status" ;
+	 private static   $CONNECTED                           = "connected" ;
+	 private static   $DISCONECTED                         = "disconected" ;  
+	  //MAIL DONE 
+	  
+ //  ADVICE CORROZONE 
+ 
+      //FROM DONE 
+	  private static   $SRC_TYPE                           = "src_type" ;
+	  private static   $HTML_CODE                          = "html_code" ;
+	  private static   $IMAGE                              = "image" ;
+	  private static   $SRC                                = "src" ;
+	
+	  public           $server;
+	  public           $user_mail                          = array() ;
+	  public           $connections                        = array() ; 
 	
 /*
 constructeur de notre classe*/ 	

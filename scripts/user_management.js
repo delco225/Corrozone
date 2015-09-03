@@ -3,7 +3,76 @@
 *   ahoussi.say@telecom-bretagne.eu
 *   Author of corro_zone 
 */
+//MESSAGE TYPE DEFINITION 
 
+    CHAT_MSG 				         = "chat_message" ;
+	ACK_MSG  				         = "ack_message"  ;
+	UPDATE_USER_MAIL    	         = "update_user_mail" ;
+	BADGE_UPDATE_MSG    			 = "badge_update_msessage";
+	ALERTE_MSG          			 = "alerte_message" ;
+	ACTUALITY_UPDATE_MSG   			 = "actuality_update_message" ;
+	USER_STATUS             		 = "user_status"
+	ADVICE_CORRO_ZONE_SPECIAL_MSG    = "Ad_cr_zone_sp_ms";
+	
+//MESSAGE ATTRIBUTE DEFINITION 
+
+  //CHAT_MSG
+    MSG_ID							  = "message_id" ;
+	SENDER_MAIL						  = "sender_mail";
+	RECEIVER_MAIL					  = "receiver_mail";
+	DATE                              = "date" ;
+  // ACK_MSG 
+    STATE	                          = "state" ;
+	RECEIVED                          = "received" ;
+	RECEIVED_READ                     = "received_read";
+	RECEIVED_READ_TYPING              = "received_read-typing";
+     //MSG_ID DEFINE EARLY 
+	 //SENDER_MAIL
+	 //RECEIVER_MAIL
+	 //DATE
+ // UPDATE_USER_MAIL 
+ 
+     MAIL                            = "mail";
+     CONNECTION_ID                   = "connection_id" ;
+	 
+ //  BADGE UPDATE 
+     TARGET                          = "target" ;
+	  //RECEIVER MAIL DONE
+	  //DATE DONE
+ // ALERTE_MSG	
+      FROM                           = "from" ;
+	  TO                             = "to" ; 
+	   //DATE 
+	  TAG                            = "tag" ;
+	  MSG                            = "message" ;
+	  
+ // ACTUALITY_UPDATE_MSG 
+      CASE                           = "case" ;
+	   //DATE
+	   //TAG 
+	   //MSG 
+ // USER STATUS 
+ 
+      STAUTS                         = "status" ;
+	  CONNECTED                      = "connected" ;
+	  DISCONECTED                    = "disconected" ;  
+	  //MAIL DONE 
+	  
+ //  ADVICE CORROZONE 
+ 
+      //FROM DONE 
+	  SRC_TYPE                       = "src_type" ;
+	  HTML_CODE                      = "html_code" ;
+	  IMAGE                          = "image" ;
+	  SRC                            = "src" ;
+	  	   
+	  
+ 	 	   
+   	
+   	
+	
+	
+	
 
 // chat session and asynchronous action 
        // Host 
