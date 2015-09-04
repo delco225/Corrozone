@@ -68,7 +68,7 @@
 	  
 	  <script src="scripts/jquery.js"></script>
        <script src="scripts/scripting.js"></script>
-       <script src="scripts/user_management.js"></script>
+      <script src="scripts/user_management.js"></script>
       
       		
         

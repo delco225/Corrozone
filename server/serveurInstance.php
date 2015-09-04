@@ -4,68 +4,7 @@ include "Server.php";
 include "Connection.php";
 
 class serveurInstance {
-	//MESSAGE TYPE DEFINITION 
 
-    private static   $CHAT_MSG 				               = "chat_message" ;
-	private static   $ACK_MSG  				               = "ack_message"  ;
-	private static   $UPDATE_USER_MAIL    	               = "update_user_mail" ;
-	private static   $BADGE_UPDATE_MSG    			       = "badge_update_msessage";
-	private static   $ALERTE_MSG          			       = "alerte_message" ;
-	private static   $ACTUALITY_UPDATE_MSG   			   = "actuality_update_message" ;
-	private static   $USER_STATUS             		       = "user_status" ;
-	private static   $ADVICE_CORRO_ZONE_SPECIAL_MSG        = "Ad_cr_zone_sp_ms";
-	
-//MESSAGE ATTRIBUTE DEFINITION 
-
-  //CHAT_MSG
-    private static   $MSG_ID							   = "message_id" ;
-	private static   $SENDER_MAIL						   = "sender_mail";
-	private static   $RECEIVER_MAIL					       = "receiver_mail";
-	private static   $DATE                                 = "date" ;
-  // ACK_MSG 
-    private static   $STATE	                               = "state" ;
-	private static   $RECEIVED                             = "received" ;
-	private static   $RECEIVED_READ                        = "received_read";
-	private static   $RECEIVED_READ_TYPING                 = "received_read-typing";
-     //MSG_ID DEFINE EARLY 
-	 //SENDER_MAIL
-	 //RECEIVER_MAIL
-	 //DATE
- // UPDATE_USER_MAIL 
- 
-     private static   $MAIL                                = "mail";
-     private static   $CONNECTION_ID                       = "connection_id" ;
-	 
- //  BADGE UPDATE 
-     private static   $TARGET                              = "target" ;
-	  //RECEIVER MAIL DONE
-	  //DATE DONE
- // ALERTE_MSG	
-     private static   $FROM                                = "from" ;
-	 private static   $TO                                  = "to" ; 
-	   //DATE 
-	 private static   $TAG                                 = "tag" ;
-	 private static   $MSG                                 = "message" ;
-	  
- // ACTUALITY_UPDATE_MSG 
-     private static   $CASE                                = "case" ;
-	   //DATE
-	   //TAG 
-	   //MSG 
- // USER STATUS 
- 
-     private static   $STAUTS                              = "status" ;
-	 private static   $CONNECTED                           = "connected" ;
-	 private static   $DISCONECTED                         = "disconected" ;  
-	  //MAIL DONE 
-	  
- //  ADVICE CORROZONE 
- 
-      //FROM DONE 
-	  private static   $SRC_TYPE                           = "src_type" ;
-	  private static   $HTML_CODE                          = "html_code" ;
-	  private static   $IMAGE                              = "image" ;
-	  private static   $SRC                                = "src" ;
 	
 	  public           $server;
 	  //key value paire  keys are user connexio ID and value are user mail 
@@ -73,7 +12,70 @@ class serveurInstance {
 	  public           $user_mail                          = array() ;
 	  
 	  //Connexion IDs  
-	  public           $connections                        = array() ; 
+	  public           $connections                        = array() ;
+	  
+	  //MESSAGE TYPE DEFINITION 
+
+            public   $CHAT_MSG 				               = "chat_message" ;
+	        public   $ACK_MSG  				               = "ack_message"  ;
+	        public   $UPDATE_USER_MAIL    	               = "update_user_mail" ;
+	        public   $BADGE_UPDATE_MSG    			       = "badge_update_msessage";
+	        public   $ALERTE_MSG          			       = "alerte_message" ;
+	        public   $ACTUALITY_UPDATE_MSG   			   = "actuality_update_message" ;
+	        public   $USER_STATUS             		       = "user_status" ;
+	        public   $ADVICE_CORRO_ZONE_SPECIAL_MSG        = "Ad_cr_zone_sp_ms";
+	
+//MESSAGE ATTRIBUTE DEFINITION 
+
+  //CHAT_MSG
+            public   $MSG_ID							   = "message_id" ;
+	        public   $SENDER_MAIL						   = "sender_mail";
+	        public   $RECEIVER_MAIL					       = "receiver_mail";
+	        public   $DATE                                 = "date" ;
+  // ACK_MSG 
+            public   $STATE	                               = "state" ;
+	        public   $RECEIVED                             = "received" ;
+	        public   $RECEIVED_READ                        = "received_read";
+	        public   $RECEIVED_READ_TYPING                 = "received_read-typing";
+     //MSG_ID DEFINE EARLY 
+	 //SENDER_MAIL
+	 //RECEIVER_MAIL
+	 //DATE
+ // UPDATE_USER_MAIL 
+ 
+             public   $MAIL                                = "mail";
+             public   $CONNECTION_ID                       = "connection_id" ;
+	 
+ //  BADGE UPDATE 
+             public   $TARGET                              = "target" ;
+	  //RECEIVER MAIL DONE
+	  //DATE DONE
+ // ALERTE_MSG	
+             public   $FROM                                = "from" ;
+	         public   $TO                                  = "to" ; 
+	   //DATE 
+	         public   $TAG                                 = "tag" ;
+	         public   $MSG                                 = "message" ;
+	  
+ // ACTUALITY_UPDATE_MSG 
+            public   $CASE                                = "case" ;
+	   //DATE
+	   //TAG 
+	   //MSG 
+ // USER STATUS 
+ 
+             public   $STAUTS                              = "status" ;
+	         public   $CONNECTED                           = "connected" ;
+	         public   $DISCONECTED                         = "disconected" ;  
+	  //MAIL DONE 
+	  
+ //  ADVICE CORROZONE 
+ 
+      //FROM DONE 
+	          public   $SRC_TYPE                           = "src_type" ;
+	          public   $HTML_CODE                          = "html_code" ;
+	          public   $IMAGE                              = "image" ;
+	          public   $SRC                                = "src" ;		 
 	
 /*
 constructeur de notre classe*/ 	
@@ -90,10 +92,11 @@ public function __construct(){
 		$this->server->setHook($this);
 		$this->server->run();
 		
+       	
 		
 }
  // return the user mail when knowing user connexion ID 
-private function findUserMailByCoonectionID($connextionID) {
+public  function findUserMailByCoonectionID($connextionID) {
 	
 	
 	    if (isset($this->user_mail["$connextionID"])) {
@@ -106,7 +109,7 @@ private function findUserMailByCoonectionID($connextionID) {
 	
 // return the user ID when we have the user mail 
 	
-private function findUserIdByMail($usermail) {
+public function findUserIdByMail($usermail) {
 	
 	    $key  = array_search($usermail,$this->user_mail) ;
 		
@@ -171,7 +174,7 @@ public function onDataReceive($connection_id,$data){
 	///// ACTIONS ////
 	public function action_register($connection_id,$data){
 		
-		echo" ok on y es ----------------------------------------" ;
+		
 		 print_r($data) ;
 		 $usermail = $data['mail'] ; 
 		 $var_mail = array($connection_id => $usermail );
@@ -192,13 +195,15 @@ public function onDataReceive($connection_id,$data){
 	
 	
 	public function action_chat_message($connection_id,$data){
+		       
+		  $mail=$data["receiver_mail"];
+		  
+		 
+		 $receiver_connexion_id = array_search($mail,$this->user_mail);
+		 
+		 echo ( "this is the receiver mail". urldecode($mail) ."and is ids "+$receiver_connexion_id   ) ;
 		
-		 $user_id                 = $this->connections[$connection_id];
-		 $receiver_connexion_id   = findUserIdByMail( $data[$this->RECEIVER_MAIL]);
-		
-		if(isset($data[$this->MSG]) && strlen($data[$this->MSG])>0){
-			     $data[$this->DATE] = date('H:i:s');
-				 
+		if(isset($data["message"]) && strlen($data["message"])>0){
 				 $this->server->sendData($receiver_connexion_id,$this->CHAT_MSG,$data);
 			
 		          	

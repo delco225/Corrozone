@@ -39,8 +39,9 @@
                                    </div>
                                   <div class="panel-body">
                                  <?php 
+		$Query ="SELECT mail,status from utilisateur where not mail='".$_SESSION['mail']."' order by status desc" ;
 								       
-									   $stmt=DatabaseRequest("SELECT mail,status from utilisateur where 1 order by status desc");
+									   $stmt=DatabaseRequest($Query);
 									   
 									    
 									   		while( $row=$stmt->fetch()){
@@ -52,7 +53,7 @@
 												
 												
 												echo("
-                                                 <div id=\"freind_module\">
+                                                 <div id=\"freind_module\" >
                                                  <img src=\"img/icon_de_qualite/moyen.jpg\" width=\"40px\" height=\"40px\" 
                                                  style=\"float:left; 
                                                  margin-top:10px ;
@@ -64,20 +65,20 @@
 												if( $row['status']==1 ) {
 												
                                                  echo("  border-color:#0eb3c2;\" >
-                                                    <h4>".$Username[0]." </br> 
+                                                    <h4 class=\"username\" >".$Username[0]." </br> 
 												 
-													
+													 </h4>
                                                   <small> en ligne   </small>
 												  
-												   </h4>
+												  
                                                  </div>
                                                  
                                                  </div>");}
 												  else{echo(" 
 												     border-color:#FF00FF;\" >
-                                                    <h4>".$Username[0]." </br> <small> en ligne il ya .... </small>
+                                                    <h4 class=\"username\" >".$Username[0]."  </br> </h4>  <small> en ligne il ya .... </small>
                                                     
-                                                 </h4>
+                                                
                                                  </div>
                                                  
                                                  </div>");}

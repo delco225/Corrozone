@@ -27,6 +27,43 @@ section,
 summary {
   display: block;
 }
+.message_left{
+														margin-left:5px; 
+                                                        margin-top:5px;
+                                                        max-width:260px;
+                                                       -webkit-border-radius:5px;
+													   -moz-border-radius: 5px;
+													    border-radius: 5px;
+                                                		border-width:1px;
+ 														border-style: solid;
+ 														border-color:#0eb3c2;
+                                                        padding:3px;
+                                                        font-size:12px;
+                                                        margin-bottom:1px;
+                                                        background-color:#cfe0d8;
+                                                        display:inline-block;"
+	
+	
+	}
+.message_right {
+	
+												        margin-top:5px;
+                                                        max-width:260px;
+                                                        margin-left:75px;
+                                                       -webkit-border-radius:5px;
+													   -moz-border-radius: 5px;
+													    border-radius: 5px;
+                                                		border-width:1px;
+ 														border-style: solid;
+ 														border-color:#0eb3c2;
+                                                        padding:3px;
+                                                        font-size:12px;
+                                                        margin-bottom:1px;
+                                                        background-color:#9cecf5;
+                                                        display:inline-block;
+	
+	
+	}
 audio,
 canvas,
 progress,

@@ -80,8 +80,29 @@
       // user ID during connexion 
        var user_id = 0;
 	   var messageid =0 ;
-	   
+	   var coockies = new Object()
+	  
+	   				
+				function ReadCookie(){
+               	var allcookies = document.cookie;
+               	document.write ("All Cookies : " + allcookies );
+               
+               // Get all the cookies pairs in an array
+               	cookiearray = allcookies.split(';');
+               
+               // Now take key value pair out of this array
+               for(var i=0; i<cookiearray.length; i++){
+                  name = cookiearray[i].split('=')[0];
+                  value = cookiearray[i].split('=')[1];
+                    coockies[name.trim()]=value;
+               		}
+				 }
+				 
+				 ReadCookie();
+				
+ 	   
 	   $(document).ready(function() {
+		         console.log(coockies) ;
 		
                 // creating a new socket depending on the web browsers
                 if (window.MozWebSocket) {
@@ -139,35 +160,47 @@
 				
 				
 				function checkJson(res) {
-                    console.log(res);
-					// action registred call when a user is registrated  
-                    if(res.action=='registred'){
+					     console.log(res);
+					     switch(res.action) {
 						
-                    // action for a chat Text received on User UI                             
-                    }else if(res.action=='chat_text'){
-                        
-                        }
-						/* performed other actions here 
-						.
-						.
-						.
-						.
-						.*/
+						// when registration is ok 
+						 case 'registrated':
+						
+						 break ;
+						 
+						 // when a chat message is received  
+						 case  CHAT_MSG :
+						       
+							   chatMessage_received(res); 
+						 
+						 
+						 break ;
+						 // default  unknow message 
+						 default :
+						 break ;
+						 
+						
+						} 
+                    
+				
+						
 						
 				}
-				
+
 			// formed chat msge
 			
 			function formedChatMsg(message){
 				     messageid ++ ;
-				     var user_mail     =$('#drop_acount').text(); 
-				     var receiver_mail = getCookie($('#receiver_user').text()); 
+				     var usermail = coockies.user_mail;
+					 var Ruser     = $('#receiver_user a').text()
+				     var receiver_mail = coockies[Ruser.trim()];
+					 console.log(Ruser) ; 
 					
 					 var data = new Object() ;
 					    data.action        = 'chat_message' ;
 					    data.type          = CHAT_MSG;
 						data.message_id    = messageid;
-						data.sender_mail   = user_mail;
+						data.sender_mail   = usermail;
 						data.receiver_mail = receiver_mail;
 						data.date          = Date() ;
 						data.message       = message ;
@@ -176,50 +209,62 @@
 				
 				
 				}	
-			// here to the user event 
+				
 			
-			function chatMsgcapture () {
+			// here to the user event on message send  
+			
+			
 				
 				$('#chat_box').click(
 				           function () {
-				             var chatmsg =  $('#chat_box').text()  ; 
-							 var data    =  formedChatMsg(chatmsg) ;
-							 socket.send(JSON.stringify(data));
+				              var chatmsg = $('#msge_area').val() ;
+							  console.log(chatmsg) ;
+							  $('#msge_area').empty() ;
+							  chatMessageSent(chatmsg);
+							  var data  =  formedChatMsg(chatmsg) ;
+							  socket.send(JSON.stringify(data));
 							 
-						   }
+						   } );
 				
+				 $('.username').click(function() {
+					  var myText=$(this).text()
+					 // loadlastMSG()
+					  $('#receiver_user a').empty();
+					  $('#receiver_user a').html(myText) ;
+					      
+					 
+					}
 				 ) ;
-				 
-		    
 				
 				
-				
-				
-				}
 				
 			// action for a chat_message received 	
-			 function chatMessage_received() {
-				 
-				 
-				 
-				 
+			 function chatMessage_received(data) {
+                         htlm_code=jQuery('<div id="actualite_msg_box"></div>')
+				         htlm_code.addClass("message_left");
+					     htlm_code.load('Vues/message_template.php');
+			             htlm_code.find('#message_zone').append(data.message) ;
+					     htlm_code.prependTo('#message_path');   
 				 
 				 
 				 
 				 }   
+			 function chatMessageSent(msg) {
+				       var htlm_code =$('<div id="actualite_msg_box"></div>');
+				       htlm_code.addClass("message_right");
+					   htlm_code.load('Vues/message_template.php');
+			           htlm_code.find('#message_zone').append(msg) ;
+					   htlm_code.prependTo('#message_path');
+				 
+				
+				 
+				 }
 				
 				
 				
-				function getCookie(cname) {
- 				   var name = cname + "=";
-    			   var ca = document.cookie.split(';');
-     			   for(var i=0; i<ca.length; i++) {
-        		   var c = ca[i];
-         		   while (c.charAt(0)==' ') c = c.substring(1);
-        		   if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-    				}
-    			return "";
-				}
+				
+
+				
 				
 				
 				
@@ -228,9 +273,9 @@
 			function register_user(){
                     payload = new Object();
                     payload.action 	= 'register';
-					var usermail = getCookie("user_mail")
+					console.log(coockies) ;
+					var usermail = coockies.user_mail;
 					payload.mail = usermail;
-					console.log("-------------------------------") ;
 					console.log(JSON.stringify(payload)) ;
                     socket.send(JSON.stringify(payload));
                 }

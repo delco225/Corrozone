@@ -94,89 +94,20 @@
                                                     <div class="panel-heading" id="msg_box">
     												<h3 class="panel-title" id="receiver_user"> <a>  Armand  </a> <span class="badge">1+</span> </h3>
   													</div>
-                                                  <div id="conteneur_msg"  > 
                                                   
+                                                  <div id="conteneur_msg"  > 
+                                                  	<div id="message_path">
+                                                    
+                                                    </div>
+                                                  
+                                         <!--msg insertion zone -->
                                          
-                 <!-- debut d un message--> 
-                 								
-                 							          <div id="actualite" 
-                                                       style=" 
-                                                        margin-left:5px; 
-                                                        margin-top:5px;
-                                                        max-width:260px;
-                                                       -webkit-border-radius:5px;
-													   -moz-border-radius: 5px;
-													    border-radius: 5px;
-                                                		border-width:1px;
- 														border-style: solid;
- 														border-color:#0eb3c2;
-                                                        padding:3px;
-                                                        font-size:12px;
-                                                        margin-bottom:1px;
-                                                        background-color:#cfe0d8;
-                                                        display:inline-block;"
-                                                            >
-											  
-                                              <img  class="img-circle" src="img/icon_de_qualite/moyen.jpg" width="40px" height="40px" 
-											   style="float:left; 
-											   margin-top:2px ;
-											   margin-left:5px;
-                                               display:inline-block;
-                                               margin-left:5px;
-											   "> 
-                                               
-											   <div id="user_description" style="padding-left:60px;
-															" >
-											  
-                                               <span style ="font-size:14px;"> <a> Boby35 </a> </br> vient d 'inviter  <a> delco1er </a>
-                                               aider le à trouver des corrections  
-                                                </span> 
-												
-											    </div>
-											    </div> <!-- fin d un message -->
-                                                
-                     <!-- debut d un message--> <div id="actualite" 
-                                                        style=" 
-                                                        margin-top:5px;
-                                                        max-width:260px;
-                                                        margin-left:75px;
-                                                       -webkit-border-radius:5px;
-													   -moz-border-radius: 5px;
-													    border-radius: 5px;
-                                                		border-width:1px;
- 														border-style: solid;
- 														border-color:#0eb3c2;
-                                                        padding:3px;
-                                                        font-size:12px;
-                                                        margin-bottom:1px;
-                                                        background-color:#9cecf5;
-                                                        display:inline-block;"
-                                                            >
-											  
-                                              <img  class="img-circle" src="img/icon_de_qualite/mal.jpg" width="40px" height="40px" 
-											   style="float:right; 
-											   margin-top:2px ;
-											   margin-left:5px;
-                                               display:inline-block;
-                                               margin-left:5px;
-											   "> 
-                                               
-											   <div id="user_description" style="padding-left:5px;
-															" >
-											  
-                                               <span style ="font-size:14px;"> <a> armand </a> </br>vient d 'inviter  <a> delco1er </a>
-                                               aider le à trouver des corrections  
-                                                </span> 
-												
-											    </div>
-											    </div> <!-- fin d un message -->
-                                                
-                                                 <!--Formulaire d evoie des messages -->
+                                                                  <!--Formulaire d evoie des messages -->
                                                  <div class="page-header">
                                                  </div>
                                                  <div class="form-inline">
                                                             <div style="display:inline-block;width:50px;margin-bottom:5px;">
-                                                             <textarea  rows="1" class="form-control" style="border-style: solid;
+                                                             <textarea  rows="1" id="msge_area" class="form-control" style="border-style: solid;
  																									        border-color:#0eb3c2;"
                                                              								>
                                                              </textarea>

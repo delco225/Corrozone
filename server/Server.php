@@ -63,11 +63,7 @@ class Server extends Socket
 	}
 	
 	public function sendData($connection_id,$action,$data){
-		if(!is_array($data)){
-			$val = $data;
-			$data = array();
-			$data['value'] = $val;
-		}
+
 		if(isset($this->clients[$connection_id]) && $this->clients[$connection_id]->handshaked){
 			$data['action'] = $action;
 			$data = json_encode($data);
