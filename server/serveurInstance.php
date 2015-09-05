@@ -201,8 +201,8 @@ public function onDataReceive($connection_id,$data){
 		 
 		 $receiver_connexion_id = array_search($mail,$this->user_mail);
 		 
-		 echo ( "this is the receiver mail". urldecode($mail) ."and is ids "+$receiver_connexion_id   ) ;
-		
+		  echo( " \n this is the receiver mail". urldecode($mail)   ) ;
+          echo("and is ids "+$receiver_connexion_id ); 		
 		if(isset($data["message"]) && strlen($data["message"])>0){
 				 $this->server->sendData($receiver_connexion_id,$this->CHAT_MSG,$data);
 			

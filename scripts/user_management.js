@@ -240,11 +240,13 @@
 				
 			// action for a chat_message received 	
 			 function chatMessage_received(data) {
+				         console.log(data) ;
                          htlm_code=jQuery('<div id="actualite_msg_box"></div>')
 				         htlm_code.addClass("message_left");
 					     htlm_code.load('Vues/message_template.php');
-			             htlm_code.find('#message_zone').append(data.message) ;
-					     htlm_code.prependTo('#message_path');   
+						 htlm_code.prependTo('#message_path');
+			             $('#message_zone').append(data.message) ;
+					        
 				 
 				 
 				 
